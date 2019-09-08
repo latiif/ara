@@ -355,19 +355,23 @@ var tashkeel = map[rune]bool{FATHA: true, FATHATAN: true, DAMMA: true,
 
 // use map for faster lookups.
 var beggining_after = map[Harf]bool{
-	ALEF_HAMZA_ABOVE: true,
-	ALEF_MADDA_ABOVE: true,
-	ALEF:             true,
-	HAMZA:            true,
-	WAW_HAMZA_ABOVE:  true,
-	ALEF_HAMZA_BELOW: true,
-	TEH_MARBUTA:      true,
-	DAL:              true,
-	THAL:             true,
-	REH:              true,
-	ZAIN:             true,
-	WAW:              true,
-	ALEF_MAKSURA:     true}
+	ALEF_HAMZA_ABOVE:     true,
+	ALEF_MADDA_ABOVE:     true,
+	ALEF:                 true,
+	HAMZA:                true,
+	WAW_HAMZA_ABOVE:      true,
+	ALEF_HAMZA_BELOW:     true,
+	TEH_MARBUTA:          true,
+	DAL:                  true,
+	THAL:                 true,
+	REH:                  true,
+	ZAIN:                 true,
+	WAW:                  true,
+	ALEF_MAKSURA:         true,
+	LAM_ALEF:             true,
+	LAM_ALEF_HAMZA_ABOVE: true,
+	LAM_ALEF_HAMZA_BELOW: true,
+}
 
 var ligatures = map[Harf]map[Harf]Harf{
 	LAM: {
