@@ -298,6 +298,13 @@ var (
 		Beggining: '\ufef9',
 		Medium:    '\ufefa',
 		Final:     '\ufefa'}
+
+	LAM_ALEF_MADDAH = Harf{ // لآ
+		Unicode:   '\ufef5',
+		Isolated:  '\ufef5',
+		Beggining: '\ufef5',
+		Medium:    '\ufef6',
+		Final:     '\ufef6'}
 )
 
 var alphabet = []Harf{
@@ -341,6 +348,7 @@ var alphabet = []Harf{
 	LAM_ALEF,
 	LAM_ALEF_HAMZA_ABOVE,
 	LAM_ALEF_HAMZA_BELOW,
+	LAM_ALEF_MADDAH,
 }
 
 // use map for faster lookups.
@@ -371,6 +379,7 @@ var beggining_after = map[Harf]bool{
 	LAM_ALEF:             true,
 	LAM_ALEF_HAMZA_ABOVE: true,
 	LAM_ALEF_HAMZA_BELOW: true,
+	LAM_ALEF_MADDAH:      true,
 }
 
 var ligatures = map[Harf]map[Harf]Harf{
@@ -378,5 +387,6 @@ var ligatures = map[Harf]map[Harf]Harf{
 		ALEF:             LAM_ALEF,
 		ALEF_HAMZA_ABOVE: LAM_ALEF_HAMZA_ABOVE,
 		ALEF_HAMZA_BELOW: LAM_ALEF_HAMZA_BELOW,
+		ALEF_MADDA_ABOVE: LAM_ALEF_MADDAH,
 	},
 }
