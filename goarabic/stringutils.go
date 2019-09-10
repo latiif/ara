@@ -1,6 +1,11 @@
 // Package goarabic contains utility functions for working with Arabic strings.
 package goarabic
 
+import (
+	"strings"
+	"sync"
+)
+
 // Reverse returns its argument string reversed rune-wise left to right.
 func Reverse(s string) string {
 	r := []rune(s)
@@ -8,6 +13,56 @@ func Reverse(s string) string {
 		r[i], r[j] = r[j], r[i]
 	}
 	return string(r)
+}
+
+// ReversePreservingNonArabic returns RTL arabic text while preserving non-araibc characters
+func ReversePreservingNonArabic(s string) string {
+
+	arabicLetters := constructAlphabetMap(alphabet)
+
+	var wg sync.WaitGroup
+	words := strings.Split(s, " ")
+
+	wg.Add(len(words))
+
+	for i, v := range words {
+		go func(index int, word string) {
+			defer wg.Done()
+			for _, letter := range word {
+				if _, ok := arabicLetters[letter]; !ok {
+					words[index] = Reverse(word)
+					return
+				}
+			}
+
+			words[index] = word
+
+		}(i, v)
+	}
+
+	wg.Wait()
+	return Reverse(strings.Join(words, " "))
+}
+
+// Helper functionality to allow for faster lookup of characters
+var arabicLettersInUnicode map[rune]bool
+
+func constructAlphabetMap(letters []Harf) map[rune]bool {
+	if arabicLettersInUnicode != nil {
+		return arabicLettersInUnicode
+	}
+	result := make(map[rune]bool)
+
+	for _, harf := range letters {
+		result[harf.Beggining] = true
+		result[harf.Isolated] = true
+		result[harf.Unicode] = true
+		result[harf.Medium] = true
+		result[harf.Final] = true
+	}
+
+	arabicLettersInUnicode = result
+	return result
 }
 
 // SmartLength returns the length of the given string
