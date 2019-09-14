@@ -265,3 +265,19 @@ func Smooth(s string) string {
 
 	return smoothed
 }
+
+//MakeRTL displays the arabic text in RTL
+func MakeRTL(size int, str string) string {
+	strlen := SmartLength(&str)
+	if strlen > size {
+		// TODO Maybe split the text
+		return str
+	}
+
+	plotsToFill := size - strlen
+
+	padding := strings.Repeat(" ", plotsToFill)
+
+	return padding + str
+
+}
