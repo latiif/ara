@@ -1,4 +1,4 @@
 build:
 	rm -f ara
 	dep ensure
-	go build
+	go build -o ara
