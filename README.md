@@ -12,11 +12,11 @@ A command line tool that correctly displays Arabic text in terminals.
 
 ### Usage
 When displaying Arabic text in terminals, it is shown incorrectly, see image.
-![alt text](https://i.imgur.com/y9aMdfc.jpg "Original behaviour")
+![alt text](http://i.imgur.com/ygbSxHq.png "Original behaviour")
 
 With *Ara*, you can pipe in Arabic text and it will display correctly.
 
-![alt text](https://i.imgur.com/UbTXXHW.jpg "Piped with Ara")
+![alt text](http://i.imgur.com/0mVt1km.png "Piped with Ara")
 
 
 
