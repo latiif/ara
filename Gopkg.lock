@@ -3,19 +3,23 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:980024b62c4dd2a365bdffff761c9ad3ed907ebd71042a6007334399c179d43f"
   name = "github.com/buger/goterm"
   packages = ["."]
+  pruneopts = ""
   revision = "c206103e1f37c0c6c5c039706305ea2aa6e8ad3b"
 
 [[projects]]
   branch = "master"
+  digest = "1:9ca8dc3cd9b14099c141cc54e60e703cf5ccf2fd21fd040ba09287082cd88b07"
   name = "golang.org/x/sys"
   packages = ["unix"]
+  pruneopts = ""
   revision = "c3b328c6e5a763a2bfc82a48b4bd855037210934"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "be3c0fb36ed0ed86686d1c7ecf07d36534f53abaedf1781a5b16f30a322b5e94"
+  input-imports = ["github.com/buger/goterm"]
   solver-name = "gps-cdcl"
   solver-version = 1
