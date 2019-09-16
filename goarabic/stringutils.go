@@ -29,13 +29,13 @@ func ReversePreservingNonArabic(s string) string {
 		go func(index int, word string) {
 			defer wg.Done()
 			for _, letter := range word {
-				if _, ok := arabicLetters[letter]; !ok {
-					words[index] = Reverse(word)
+				if _, ok := arabicLetters[letter]; ok {
+					words[index] = word
 					return
 				}
 			}
 
-			words[index] = word
+			words[index] = Reverse(word)
 
 		}(i, v)
 	}
