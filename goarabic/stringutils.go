@@ -4,6 +4,7 @@ package goarabic
 import (
 	"strings"
 	"sync"
+	"unicode"
 )
 
 // Reverse returns its argument string reversed rune-wise left to right.
@@ -266,18 +267,42 @@ func Smooth(s string) string {
 	return smoothed
 }
 
-//MakeRTL displays the arabic text in RTL
-func MakeRTL(size int, str string) string {
-	strlen := SmartLength(&str)
-	if strlen > size {
-		// TODO Maybe split the text
-		return str
+//breakLineAt finds the first whitespace to break a row
+func breakLineAt(pos int, str string) (fst, snd string) {
+	runes := []rune(str)
+
+	for i := pos; i < len(runes); i++ {
+		if unicode.IsSpace(runes[i]) {
+			fst = string(runes[i+1:])
+			snd = string(runes[:i])
+			return
+		}
 	}
 
+	fst = str
+	snd = ""
+	return
+}
+
+//padRTL Fills the leading places with spaces to make an RTL text
+func padRTL(strlen, size int, str string) string {
 	plotsToFill := size - strlen
 
 	padding := strings.Repeat(" ", plotsToFill)
 
 	return padding + str
+}
+
+//MakeRTL displays the arabic text in RTL
+func MakeRTL(size int, str string) string {
+	strlen := SmartLength(&str)
+
+	if strlen > size {
+		// Finds a suitable place to split the long row
+		fst, snd := breakLineAt(strlen-size-1, str)
+		return padRTL(SmartLength(&fst), size, fst) + "\n" + MakeRTL(size, snd)
+	}
+
+	return padRTL(strlen, size, str)
 
 }
