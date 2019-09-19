@@ -24,7 +24,9 @@ With *Ara*, you can pipe in Arabic text and it will display correctly.
 
 ![alt text](http://i.imgur.com/0mVt1km.png "Piped with Ara")
 
+In addition, the output is right-aligned with smart line breaks accomodating to terminal width.
 
+![alt text](http://i.imgur.com/VGd16kM.png "Line-wrap with right alignment") 
 
 ### Disclaimer
 This tool is based on [goarabic](https://github.com/01walid/goarabic) under MIT license, with additional functionalities.
