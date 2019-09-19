@@ -3,7 +3,6 @@ package goarabic
 
 import (
 	"strings"
-	"sync"
 	"unicode"
 )
 
@@ -21,28 +20,33 @@ func ReversePreservingNonArabic(s string) string {
 
 	arabicLetters := constructAlphabetMap(alphabet)
 
-	var wg sync.WaitGroup
 	words := strings.Split(s, " ")
+	stack := NewStack(len(words))
 
-	wg.Add(len(words))
+	formattedWords := make([]string, 0, len(words))
 
-	for i, v := range words {
-		go func(index int, word string) {
-			defer wg.Done()
-			for _, letter := range word {
-				if _, ok := arabicLetters[letter]; ok {
-					words[index] = word
-					return
-				}
+	for _, word := range words {
+
+		isArabicWord := false
+		for _, letter := range word {
+			if _, ok := arabicLetters[letter]; ok {
+				isArabicWord = true
+				break
 			}
+		}
+		if isArabicWord {
 
-			words[index] = Reverse(word)
-
-		}(i, v)
+			if nonArabic := stack.Flush(); len(nonArabic) == 0 {
+			} else {
+				formattedWords = append(formattedWords, nonArabic...)
+			}
+			formattedWords = append(formattedWords, word)
+		} else {
+			stack.Push(Reverse(word))
+		}
 	}
 
-	wg.Wait()
-	return Reverse(strings.Join(words, " "))
+	return Reverse(strings.Join(formattedWords, " "))
 }
 
 // Helper functionality to allow for faster lookup of characters
@@ -299,7 +303,7 @@ func MakeRTL(size int, str string) string {
 
 	if strlen > size {
 		// Finds a suitable place to split the long row
-		fst, snd := breakLineAt(strlen-size-1, str)
+		fst, snd := breakLineAt(strlen-size, str)
 		return padRTL(SmartLength(&fst), size, fst) + "\n" + MakeRTL(size, snd)
 	}
 
