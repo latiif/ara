@@ -59,7 +59,7 @@ func constructAlphabetMap(letters []Harf) map[rune]bool {
 	result := make(map[rune]bool)
 
 	for _, harf := range letters {
-		result[harf.Beggining] = true
+		result[harf.Beginning] = true
 		result[harf.Isolated] = true
 		result[harf.Unicode] = true
 		result[harf.Medium] = true
@@ -140,9 +140,9 @@ func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 		}
 
 		if previousIn && nextIn { // between two Arabic Alphabet, return the medium glyph
-			for s := range beggining_after {
+			for s := range Beginning_after {
 				if s.equals(previousChar) {
-					return getHarf(currentChar).Beggining
+					return getHarf(currentChar).Beginning
 				}
 			}
 
@@ -150,11 +150,11 @@ func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 		}
 
 		if nextIn { // beginning (because the previous is not in the Arabic Alphabet)
-			return getHarf(currentChar).Beggining
+			return getHarf(currentChar).Beginning
 		}
 
 		if previousIn { // final (because the next is not in the Arabic Alphabet)
-			for s := range beggining_after {
+			for s := range Beginning_after {
 				if s.equals(previousChar) {
 					return getHarf(currentChar).Isolated
 				}
@@ -176,7 +176,7 @@ func (c *Harf) equals(char rune) bool {
 	switch char {
 	case c.Unicode:
 		return true
-	case c.Beggining:
+	case c.Beginning:
 		return true
 	case c.Isolated:
 		return true
