@@ -1,6 +1,6 @@
 # Ara
 
-A command line tool that correctly displays Arabic text in terminals.
+A command line tool that correctly displays Arabic text in terminals. ([screencap](https://i.imgur.com/d8OGWux.gifv))
 
 ### Installation 
 
