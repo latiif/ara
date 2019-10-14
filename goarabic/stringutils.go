@@ -117,11 +117,10 @@ func RemoveTatweel(s string) string {
 
 	return string(r)
 }
-func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 
-	glyph := currentChar
-	previousIn := false // in the Arabic Alphabet or not
-	nextIn := false     // in the Arabic Alphabet or not
+func isBetweenArabicLetters(previousChar, currentChar, nextChar rune) (previousIn, nextIn bool) {
+
+	previousIn, nextIn = false, false
 
 	for _, s := range alphabet {
 		if s.equals(previousChar) { // previousChar in the Arabic Alphabet ?
@@ -132,6 +131,15 @@ func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 			nextIn = true
 		}
 	}
+
+	return previousIn, nextIn
+}
+
+func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
+
+	glyph := currentChar
+
+	previousIn, nextIn := isBetweenArabicLetters(previousChar, currentChar, nextChar)
 
 	for _, s := range alphabet {
 
@@ -170,7 +178,7 @@ func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 	return glyph
 }
 
-// equals() return if true if the given Arabic char is alphabetically equal to
+// equals() return true if the given Arabic char is alphabetically equal to
 // the current Harf regardless its shape (Glyph)
 func (c *Harf) equals(char rune) bool {
 	switch char {
