@@ -1,14 +1,13 @@
 package main
 
 import (
-	"ara/goarabic"
-
 	"bufio"
 	"fmt"
 	"log"
 	"os"
 
 	"github.com/buger/goterm"
+	"github.com/latiif/ara/goarabic"
 )
 
 func main() {
