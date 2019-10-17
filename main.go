@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/buger/goterm"
-	"github.com/latiif/ara/goarabic"
+	ara "github.com/latiif/ara/goarabic"
 )
 
 func main() {
@@ -17,12 +17,17 @@ func main() {
 
 	for scanner.Scan() {
 
+		rawText := scanner.Text()
+		//table := ara.GenerateTashkeelTable(rawText)
+
 		fmt.Println(
-			goarabic.MakeRTL(ttywidth,
-				goarabic.ReversePreservingNonArabic(
-					goarabic.ToGlyph(
-						goarabic.Smooth(
-							goarabic.RemoveTashkeel(scanner.Text()))))))
+			ara.MakeRTL(ttywidth,
+
+				ara.ReversePreservingNonArabic(
+					ara.ToGlyph(
+						ara.Smooth(
+							ara.RemoveTashkeel(rawText))))))
+
 	}
 
 	if err := scanner.Err(); err != nil {
