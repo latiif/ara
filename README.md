@@ -1,5 +1,8 @@
 # Ara
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/latiif/ara)](https://goreportcard.com/report/github.com/latiif/ara)
+![GitHub last commit](https://img.shields.io/github/last-commit/latiif/ara)
+
 A command line tool that correctly displays Arabic text in terminals. ([screencap](https://i.imgur.com/d8OGWux.gifv))
 
 ### Installation 
