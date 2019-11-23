@@ -306,13 +306,13 @@ func padRTL(strlen, size int, str string) string {
 }
 
 //MakeRTL displays the arabic text in RTL
-func MakeRTL(size int, str string) string {
-	strlen := SmartLength(&str)
+func MakeRTL(size, tashkeels int, str string) string {
+	strlen := SmartLength(&str) - tashkeels
 
 	if strlen > size {
 		// Finds a suitable place to split the long row
 		fst, snd := breakLineAt(strlen-size, str)
-		return padRTL(SmartLength(&fst), size, fst) + "\n" + MakeRTL(size, snd)
+		return padRTL(SmartLength(&fst), size, fst) + "\n" + MakeRTL(size, tashkeels, snd)
 	}
 
 	return padRTL(strlen, size, str)
