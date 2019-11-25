@@ -18,6 +18,7 @@ wget https://github.com/llusx/ara/releases/download/v0.1-alpha/ara && chmod +x a
 - RTL line wrap and RTL line padding. (Depending on terminal width)
 - RTL rendering in terminals. (Right alignment)
 - Glyphes and ligatures for لآ,لا,لأ,لإ.
+- Full support for Tashkeels (One tashkeel per letter).
 
 ### Font support
 
