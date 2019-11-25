@@ -1,6 +1,7 @@
 package goarabic
 
 import (
+	"fmt"
 	"reflect"
 )
 
@@ -32,17 +33,23 @@ func ApplyTashkeel(table []rune, s string) string {
 
 	reverseAny(table)
 
+	fmt.Println(sRune)
+	fmt.Println(table)
+
 	// Traverse both array
 	for i < n1 && j < n2 {
 
 		r[k] = sRune[i]
 		k++
 		i++
+
 		if table[j] != rune(0) {
 			r[k] = table[j]
 			k++
+			j += 2
+		} else {
+			j++
 		}
-		j++
 
 	}
 
@@ -62,6 +69,7 @@ func ApplyTashkeel(table []rune, s string) string {
 		j++
 	}
 
+	fmt.Println(r)
 	return string(r)
 
 }
