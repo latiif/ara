@@ -56,17 +56,10 @@ func ApplyTashkeel(table []rune, s string) string {
 		i++
 	}
 
-	// Store remaining elements of second array
-	for j < n2 {
-		if table[j] != rune(0) {
-			r[k] = table[j]
-			k++
-		}
-		j++
-	}
-
-	return string(r)
-
+	// ignore trailing empty 0 from tashkeel table
+	trimmed := make([]rune, k)
+	copy(trimmed, r)
+	return string(trimmed)
 }
 
 var tashkeels = []rune{

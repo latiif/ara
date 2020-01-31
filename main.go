@@ -27,7 +27,6 @@ func main() {
 						ara.ToGlyph(
 							ara.Smooth(
 								ara.RemoveTashkeel(rawText)))))))
-
 	}
 
 	if err := scanner.Err(); err != nil {

@@ -75,14 +75,12 @@ func constructAlphabetMap(letters []Harf) map[rune]bool {
 func SmartLength(s *string) int {
 	// len() use int as return value, so we'd better follow for compatibility
 	length := 0
-
 	for _, value := range *s {
 		if tashkeel[value] {
 			continue
 		}
 		length++
 	}
-
 	return length
 }
 
@@ -299,9 +297,7 @@ func breakLineAt(pos int, str string) (fst, snd string) {
 //padRTL Fills the leading places with spaces to make an RTL text
 func padRTL(strlen, size int, str string) string {
 	plotsToFill := size - strlen
-
 	padding := strings.Repeat(" ", plotsToFill)
-
 	return padding + str
 }
 
