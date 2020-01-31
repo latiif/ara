@@ -2,6 +2,7 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/latiif/ara)](https://goreportcard.com/report/github.com/latiif/ara)
 ![GitHub last commit](https://img.shields.io/github/last-commit/latiif/ara)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/latiif/ara)
 
 A command line tool that correctly displays Arabic text in terminals. ([screencap](https://i.imgur.com/d8OGWux.gifv))
 
@@ -11,14 +12,14 @@ Check [releases](https://github.com/llusx/ara/releases) and download the binary 
 
 Get the binary and add it to your `$PATH`
 ```bash
-wget https://github.com/llusx/ara/releases/download/v0.1-alpha/ara && chmod +x ara
+wget https://github.com/latiif/ara/releases/download/v0.5/ara && chmod +x ara
 ```
 ### Key Features
 - Improved Non-Arabic and punctuation interpolation with Arabic text.
-- RTL line wrap and RTL line padding. (Depending on terminal width)
-- RTL rendering in terminals. (Right alignment)
+- RTL line wrap and RTL line padding. (Depending on terminal width).
+- RTL rendering in terminals. (Right alignment).
 - Glyphes and ligatures for لآ,لا,لأ,لإ.
-- Full support for Tashkeels (One tashkeel per letter).
+- Full support (including RTL) for Tashkeels (One tashkeel per letter).
 
 ### Font support
 
