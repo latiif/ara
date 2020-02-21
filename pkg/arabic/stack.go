@@ -1,4 +1,4 @@
-package goarabic
+package arabic
 
 //Stack is used to aggregate Non-Arabic words
 type Stack struct {

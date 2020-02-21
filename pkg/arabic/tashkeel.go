@@ -1,4 +1,4 @@
-package goarabic
+package arabic
 
 import (
 	"reflect"

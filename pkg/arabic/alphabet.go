@@ -1,4 +1,4 @@
-package goarabic
+package arabic
 
 // Harf holds the Arabic character with its different representation forms (glyphs).
 type Harf struct {
