@@ -1,9 +1,7 @@
 package cmd
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 
 	"github.com/latiif/ara/pkg/undot"
 
@@ -22,10 +20,13 @@ var normCmd = &cobra.Command{
 }
 
 func runUndotCmd(cmd *cobra.Command, args []string) {
-	scanner := bufio.NewScanner(os.Stdin)
+
+	scanner := getScanner()
+	writer := getWriter()
 
 	for scanner.Scan() {
 		rawText := scanner.Text()
-		fmt.Println(undot.Undot(rawText))
+		fmt.Fprintln(writer, undot.Undot(rawText))
+		writer.Flush()
 	}
 }

@@ -1,17 +1,19 @@
 package cmd
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/buger/goterm"
 	"github.com/latiif/ara/pkg/arabic"
 	"github.com/spf13/cobra"
 )
 
-var rtlFlag bool = true
+var (
+	rtlFlag    bool   = true
+	inputFile  string = ""
+	outputFile string = ""
+)
 
 var rootCmd = &cobra.Command{
 	Use:   "ara",
@@ -27,13 +29,15 @@ func Execute() error {
 }
 
 func arartl() {
-	scanner := bufio.NewScanner(os.Stdin)
+
+	scanner := getScanner()
+	writer := getWriter()
 
 	for scanner.Scan() {
 		rawText := scanner.Text()
 		table := arabic.GenerateTashkeelTable(rawText)
 
-		fmt.Println(
+		fmt.Fprintln(writer,
 			guardedRTL(
 				arabic.ApplyTashkeel(table,
 					arabic.ReversePreservingNonArabic(
@@ -41,6 +45,7 @@ func arartl() {
 							arabic.Smooth(
 								arabic.RemoveTashkeel(rawText)))))))
 
+		writer.Flush()
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -50,6 +55,8 @@ func arartl() {
 
 func init() {
 	rootCmd.PersistentFlags().BoolVarP(&rtlFlag, "adjust-right", "a", false, "Adjust output text to be rtl (useful when in shell, less so if you want to pipe into a file)")
+	rootCmd.PersistentFlags().StringVarP(&inputFile, "input", "i", "", "If not empty, apply command on the contents of the input file.")
+	rootCmd.PersistentFlags().StringVarP(&outputFile, "output", "o", "", "If not empty, write output to specified file.")
 }
 
 func guardedRTL(str string) string {
