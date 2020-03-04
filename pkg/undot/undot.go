@@ -19,12 +19,12 @@ var undotted = map[string]string{
 	"غ": "ع",
 	"ف": "ڡ",
 	"ق": "ٯ",
-	"ك": "ڪ",
 	"ن": "ں",
 	"ي": "ى",
 	"ة": "ه",
 }
 
+// Undot replaces dotted letters with undotted ones
 func Undot(str string) string {
 	str = arabic.RemoveTashkeel(str)
 	result := ""
