@@ -62,6 +62,9 @@ func init() {
 func guardedRTL(str string) string {
 	if rtlFlag {
 		ttywidth := int(goterm.Width())
+		if ttywidth <= 0 {
+			log.Fatalf("tty width is (%d), unable to adjust right. (You might be piping into a file).", ttywidth)
+		}
 		return arabic.MakeRTL(ttywidth, str)
 	}
 	return str
