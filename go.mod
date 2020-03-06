@@ -1,6 +1,6 @@
 module github.com/latiif/ara
 
-go 1.13
+go 1.14
 
 require (
 	github.com/buger/goterm v0.0.0-20181115115552-c206103e1f37
