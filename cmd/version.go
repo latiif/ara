@@ -6,7 +6,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// VERSION is ara's current version
 var VERSION = "unversioned"
+
+// COMMITID is populated upon build
 var COMMITID = "unknown commit"
 
 func init() {

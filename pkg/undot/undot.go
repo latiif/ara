@@ -29,7 +29,6 @@ func Undot(str string) string {
 	str = arabic.RemoveTashkeel(str)
 	result := ""
 	for _, v := range str {
-
 		if muhmal, found := undotted[string(v)]; found {
 			result += muhmal
 			continue
