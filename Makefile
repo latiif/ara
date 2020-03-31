@@ -1,4 +1,4 @@
-VERSION = v0.5.1
+VERSION = v0.7
 COMMITID = $(shell git rev-parse HEAD)
 build:
 	rm -f ara
