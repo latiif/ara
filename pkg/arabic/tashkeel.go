@@ -63,7 +63,7 @@ func ApplyTashkeel(table []rune, s string) string {
 }
 
 var tashkeels = []rune{
-	FATHA, FATHATAN, DAMMA, DAMMATAN, KASRA, KASRATAN, SHADDA, SUKUN,
+	fatha, fathataan, damma, dammataan, kasra, kasrataan, shadda, sukun,
 }
 
 func reverseAny(s interface{}) {

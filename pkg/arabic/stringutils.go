@@ -1,4 +1,4 @@
-// Package goarabic contains utility functions for working with Arabic strings.
+// Package arabic contains utility functions for working with Arabic strings.
 package arabic
 
 import (
@@ -101,13 +101,13 @@ func RemoveTashkeel(s string) string {
 	return string(r)
 }
 
-// RemoveTatweel returns its argument as rune-wise string without Arabic Tatweel character.
-func RemoveTatweel(s string) string {
+// RemoveKashida returns its argument as rune-wise string without Arabic Tatweel character.
+func RemoveKashida(s string) string {
 
 	r := make([]rune, 0, len(s))
 
 	for _, value := range s {
-		if TATWEEL.equals(value) {
+		if kasheeda.equals(value) {
 			continue
 		}
 		r = append(r, value)
@@ -146,7 +146,7 @@ func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 		}
 
 		if previousIn && nextIn { // between two Arabic Alphabet, return the medium glyph
-			for s := range Beginning_after {
+			for s := range initialAfter {
 				if s.equals(previousChar) {
 					return getHarf(currentChar).Initial
 				}
@@ -160,7 +160,7 @@ func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 		}
 
 		if previousIn { // final (because the next is not in the Arabic Alphabet)
-			for s := range Beginning_after {
+			for s := range initialAfter {
 				if s.equals(previousChar) {
 					return getHarf(currentChar).Isolated
 				}
