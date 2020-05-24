@@ -1,5 +1,5 @@
 # Ara
-
+![Validate](https://github.com/latiif/ara/workflows/Validate/badge.svg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/latiif/ara)](https://goreportcard.com/report/github.com/latiif/ara)
 ![GitHub last commit](https://img.shields.io/github/last-commit/latiif/ara)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/latiif/ara)
