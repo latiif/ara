@@ -38,6 +38,7 @@ func TestApplyTashkeel(t *testing.T) {
 		{"ءِ ءً ءِ"},
 		{"ؤٌ"},
 		{"ﻻ"},
+		{"ءٍ"},
 		{" "},
 		{"latin"},
 	}
