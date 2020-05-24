@@ -28,6 +28,28 @@ func TestGenerateTashkeelTable(t *testing.T) {
 	}
 }
 
+func TestApplyTashkeel(t *testing.T) {
+	var testcases = []struct {
+		text string
+	}{
+		{"ءَ"},
+		{"ء"},
+		{"ءُ ءْ ءُ"},
+		{"ءِ ءً ءِ"},
+		{"ؤٌ"},
+		{"ﻻ"},
+		{" "},
+		{"latin"},
+	}
+	for _, tc := range testcases {
+		tashkeels := GenerateTashkeelTable(tc.text)
+		result := ApplyTashkeel(tashkeels, RemoveTashkeel(tc.text))
+		if tc.text != result {
+			t.Errorf("got %q, want %q", result, tc.text)
+		}
+	}
+}
+
 func areEqual(a, b []rune) bool {
 	if len(a) != len(b) {
 		return false
