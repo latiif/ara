@@ -45,7 +45,7 @@ func ReversePreservingNonArabic(s string) string {
 			stack.Push(Reverse(word))
 		}
 	}
-
+	formattedWords = append(formattedWords, stack.Flush()...)
 	return Reverse(strings.Join(formattedWords, " "))
 }
 
