@@ -56,8 +56,8 @@ func arartl() {
 
 func init() {
 	rootCmd.Flags().BoolVarP(&rtlFlag, "adjust-right", "a", false, "Adjust output text to be rtl (useful when in shell, less so if you want to pipe into a file)")
-	rootCmd.PersistentFlags().StringVarP(&inputFile, "input", "i", "", "If not empty, apply command on the contents of the input file.")
-	rootCmd.PersistentFlags().StringVarP(&outputFile, "output", "o", "", "If not empty, write output to specified file.")
+	rootCmd.PersistentFlags().StringVarP(&inputFile, "input", "i", "", "Apply command on the contents of the input file.")
+	rootCmd.PersistentFlags().StringVarP(&outputFile, "output", "o", "", "Write output to specified file.")
 }
 
 func guardedRTL(str string) string {

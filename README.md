@@ -52,8 +52,8 @@ Available Commands:
 Flags:
   -a, --adjust-right    Adjust output text to be rtl (useful when in shell, less so if you want to pipe into a file)
   -h, --help            help for ara
-  -i, --input string    If not empty, apply command on the contents of the input file.
-  -o, --output string   If not empty, write output to specified file.
+  -i, --input string    Apply command on the contents of the input file.
+  -o, --output string   Write output to specified file.
 
 Use "ara [command] --help" for more information about a command.
 
