@@ -1,9 +1,14 @@
 module github.com/latiif/ara
 
-go 1.16
+go 1.23
 
 require (
-	github.com/buger/goterm v0.0.0-20181115115552-c206103e1f37
-	github.com/spf13/cobra v0.0.6
-	golang.org/x/sys v0.0.0-20190913121621-c3b328c6e5a7 // indirect
+	github.com/buger/goterm v1.0.4
+	github.com/spf13/cobra v1.8.1
+)
+
+require (
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
+	golang.org/x/sys v0.29.0 // indirect
 )
