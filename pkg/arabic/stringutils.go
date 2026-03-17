@@ -277,7 +277,7 @@ func Smooth(s string) string {
 	return smoothed
 }
 
-//breakLineAt finds the first whitespace to break a row
+// breakLineAt finds the first whitespace to break a row
 func breakLineAt(pos int, str string) (fst, snd string) {
 	runes := []rune(str)
 
@@ -294,14 +294,14 @@ func breakLineAt(pos int, str string) (fst, snd string) {
 	return
 }
 
-//padRTL Fills the leading places with spaces to make an RTL text
+// padRTL Fills the leading places with spaces to make an RTL text
 func padRTL(strlen, size int, str string) string {
 	plotsToFill := size - strlen
 	padding := strings.Repeat(" ", plotsToFill)
 	return padding + str
 }
 
-//MakeRTL displays the arabic text in RTL
+// MakeRTL displays the arabic text in RTL
 func MakeRTL(size int, str string) string {
 	strlen := SmartLength(&str)
 
