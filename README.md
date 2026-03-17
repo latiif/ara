@@ -12,7 +12,7 @@ Check [releases](https://github.com/latiif/ara/releases) and download the binary
 
 Get the binary and add it to your `$PATH`
 ```bash
-wget https://github.com/latiif/ara/releases/download/0.7/ara && chmod +x ara
+curl -L https://github.com/latiif/ara/releases/latest/download/ara -o ara && chmod +x ara && mv ara /usr/local/bin/
 ```
 ### Key Features
 - 🆕 Undotting of Arabic letters (Rasm).
