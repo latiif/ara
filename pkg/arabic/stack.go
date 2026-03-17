@@ -1,6 +1,6 @@
 package arabic
 
-//Stack is used to aggregate Non-Arabic words
+// Stack is used to aggregate Non-Arabic words
 type Stack struct {
 	stack    []string
 	capacity int
