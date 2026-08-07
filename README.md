@@ -1,6 +1,5 @@
 # Ara
 ![Validate](https://github.com/latiif/ara/workflows/Validate/badge.svg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/latiif/ara)](https://goreportcard.com/report/github.com/latiif/ara)
 ![GitHub last commit](https://img.shields.io/github/last-commit/latiif/ara)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/latiif/ara)
 
@@ -8,17 +7,22 @@ A command line tool that correctly displays Arabic text in terminals.
 
 ### Installation
 
-Check [releases](https://github.com/latiif/ara/releases) and download the binary directly.
+Check [releases](https://github.com/latiif/ara/releases) and download the archive for your OS and architecture directly.
 
-Get the binary and add it to your `$PATH`
+On macOS or Linux, this fetches the right archive, extracts the binary, and adds it to your `$PATH`:
 ```bash
-curl -L https://github.com/latiif/ara/releases/latest/download/ara -o ara && chmod +x ara && mv ara /usr/local/bin/
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+ARCH=$(uname -m); case "$ARCH" in x86_64) ARCH=amd64 ;; aarch64|arm64) ARCH=arm64 ;; esac
+curl -L "https://github.com/latiif/ara/releases/latest/download/ara_${OS}_${ARCH}.tar.gz" | tar xz ara
+chmod +x ara && mv ara /usr/local/bin/
 ```
+
+On Windows, download the matching `.zip` from the [releases page](https://github.com/latiif/ara/releases).
 ### Key Features
-- 🆕 Undotting of Arabic letters (Rasm).
-- 🆕 Revamped command line interface.
-- 🆕 Add option to use files as input and/or output in the tool.
-- Improved Non-Arabic and punctuation interpolation with Arabic text.
+- 🆕 Correctly renders Arabic mixed with quotes, tags, numbers, and other non-Arabic content, using the Unicode Bidirectional Algorithm. Works for plain text as well as structured files like JSON, YAML, TOML, and XML.
+- Undotting of Arabic letters (Rasm).
+- Revamped command line interface.
+- Add option to use files as input and/or output in the tool.
 - RTL line wrap and RTL line padding. (Depending on terminal width).
 - RTL rendering in terminals. (Right alignment).
 - Glyphes and ligatures for لآ,لا,لأ,لإ.
@@ -45,6 +49,7 @@ Usage:
   ara [command]
 
 Available Commands:
+  completion  Generate the autocompletion script for the specified shell
   help        Help about any command
   undot       Removes the dots of Arabic letters
   version     Print the version number of ara
