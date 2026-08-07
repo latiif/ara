@@ -36,15 +36,8 @@ func arartl() {
 
 	for scanner.Scan() {
 		rawText := scanner.Text()
-		table := arabic.GenerateTashkeelTable(rawText)
 
-		fmt.Fprintln(writer,
-			guardedRTL(
-				arabic.ApplyTashkeel(table,
-					arabic.ReversePreservingNonArabic(
-						arabic.ToGlyph(
-							arabic.Smooth(
-								arabic.RemoveTashkeel(rawText)))))))
+		fmt.Fprintln(writer, guardedRTL(arabic.RenderBidi(rawText)))
 
 		writer.Flush()
 	}

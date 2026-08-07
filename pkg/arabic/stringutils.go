@@ -15,61 +15,6 @@ func Reverse(s string) string {
 	return string(r)
 }
 
-// ReversePreservingNonArabic returns RTL arabic text while preserving non-araibc characters
-func ReversePreservingNonArabic(s string) string {
-
-	arabicLetters := constructAlphabetMap(alphabet)
-
-	words := strings.Split(s, " ")
-	stack := NewStack(len(words))
-
-	formattedWords := make([]string, 0, len(words))
-
-	for _, word := range words {
-
-		isArabicWord := false
-		for _, letter := range word {
-			if _, ok := arabicLetters[letter]; ok {
-				isArabicWord = true
-				break
-			}
-		}
-		if isArabicWord {
-
-			if nonArabic := stack.Flush(); len(nonArabic) == 0 {
-			} else {
-				formattedWords = append(formattedWords, nonArabic...)
-			}
-			formattedWords = append(formattedWords, word)
-		} else {
-			stack.Push(Reverse(word))
-		}
-	}
-	formattedWords = append(formattedWords, stack.Flush()...)
-	return Reverse(strings.Join(formattedWords, " "))
-}
-
-// Helper functionality to allow for faster lookup of characters
-var arabicLettersInUnicode map[rune]bool
-
-func constructAlphabetMap(letters []Harf) map[rune]bool {
-	if arabicLettersInUnicode != nil {
-		return arabicLettersInUnicode
-	}
-	result := make(map[rune]bool)
-
-	for _, harf := range letters {
-		result[harf.Initial] = true
-		result[harf.Isolated] = true
-		result[harf.Unicode] = true
-		result[harf.Medial] = true
-		result[harf.Final] = true
-	}
-
-	arabicLettersInUnicode = result
-	return result
-}
-
 // SmartLength returns the length of the given string
 // without considering the Arabic Vowels (Tashkeel).
 func SmartLength(s *string) int {
@@ -217,7 +162,7 @@ func ToGlyph(text string) string {
 
 	var previousChar, currentChar, nextChar rune
 
-	for i := 0; i < length; i++ {
+	for i := range length {
 
 		// get the current char
 		currentChar = r[i]

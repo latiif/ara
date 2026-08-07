@@ -1,5 +1,7 @@
 package undot
 
+import "strings"
+
 import "github.com/latiif/ara/pkg/arabic"
 
 var undotted = map[string]string{
@@ -27,13 +29,13 @@ var undotted = map[string]string{
 // Undot replaces dotted letters with undotted ones
 func Undot(str string) string {
 	str = arabic.RemoveTashkeel(str)
-	result := ""
+	var result strings.Builder
 	for _, v := range str {
 		if muhmal, found := undotted[string(v)]; found {
-			result += muhmal
+			result.WriteString(muhmal)
 			continue
 		}
-		result += string(v)
+		result.WriteString(string(v))
 	}
-	return result
+	return result.String()
 }
